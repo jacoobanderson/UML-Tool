@@ -22,7 +22,7 @@ var drawConnector = function() {
   };
   var posnBRight = {
     x: divB.offsetLeft + divB.offsetWidth / 2,
-    y: divB.offsetTop + divB.offsetHeight - 10
+    y: divB.offsetTop - divB.offsetHeight + 40
   };
 
 var dStrRight =
