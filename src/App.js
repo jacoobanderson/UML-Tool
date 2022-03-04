@@ -1,9 +1,9 @@
-import './App.css';
-import './components/canvas.js'
+import Canvas from './components/canvas.js'
 
 function App() {
   return (
     <div className="App">
+      <Canvas />
     </div>
   );
 }
