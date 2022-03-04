@@ -1,5 +1,6 @@
 import React from 'react'
 import './canvas.css'
+import ClassSquare from './classSquare.js'
 
 const Canvas = () => {
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,6 +55,7 @@ drawConnector()
         </svg>
         <div id="a">Div 1</div>
         <div id="b">Div 2</div>
+        <ClassSquare />
     </div>
   )
 }
