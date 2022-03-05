@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './canvas.css'
 import ClassSquare from './classSquare.js'
 
 const Canvas = () => {
-document.addEventListener('DOMContentLoaded', function() {
-var divA       = document.querySelector("#a");
-var divB       = document.querySelector("#b");
+
+  const [squareList, setSquareList] = useState([])
+  const [childKey, setChildKey] = useState(null)
+  const [childKeyCompareOne, setChildCompareKeyOne] = useState(null)
+  const [childKeyCompareTwo, setChildCompareKeyTwo] = useState(null)
+  const [compare, setCompare] = useState(null)
+
+const selectBoxes = () => {
+    const squareOne = document.querySelector(`#squareDiv0`)
+    const squareTwo = document.querySelector(`#squareDiv1`)
+    drawArrow(squareOne, squareTwo)
+  }
+
+const getKeyFromChild = (key) => {
+  setChildKey(key)
+  if (compare === true) {
+    if (childKeyCompareOne !== key) {
+      setChildCompareKeyOne(key)
+    } else {
+      setChildCompareKeyTwo(key)
+    }
+  }
+}
+
+const onAddBtnClick = () => {
+  setSquareList(squareList.concat(<ClassSquare key={squareList.length} id={squareList.length} getKeyFromChild={getKeyFromChild} />));
+  console.log(childKey)
+}
+
+const drawArrow = (divA, divB) => {
+
 var arrow  = document.querySelector("#arrow");
 
 var drawConnector = function() {
@@ -35,13 +63,14 @@ var dStrRight =
   (posnARight.x) + "," + (posnARight.y);
 arrow.setAttribute("d", dStrRight);
 };
-
 drawConnector()
-})
+}
 
 
   return (
     <div className="container">
+      <button onClick={onAddBtnClick}>Add box</button>
+      <button onClick={selectBoxes}>Add arrow between boxes</button>
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
         <defs>
             <marker id="arrowhead" viewBox="0 0 10 10" refX="3" refY="5"
@@ -53,11 +82,9 @@ drawConnector()
             <path id="arrow"/>
         </g>
         </svg>
-        <div id="a">Div 1</div>
-        <div id="b">Div 2</div>
-        <ClassSquare />
+        {squareList}
     </div>
   )
-}
+  }
 
 export default Canvas

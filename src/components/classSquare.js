@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './classSquare.css'
 
-const ClassSquare = () => {
+const ClassSquare = (props) => {
+  const square = useRef(null)
   useEffect(() => {
-    document.querySelector('.classcontainerdiv').addEventListener('mousedown', (event) => onMouseDown(event))
+    square.current.addEventListener('mousedown', (event) => onMouseDown(event))
+    square.current.addEventListener('click', (event) => props.getKeyFromChild(props.id))
+    square.current.setAttribute('id', 'squareDiv' + props.id)
   })
 
   function onMouseDown (event) {
-    const element = document.querySelector('.classcontainerdiv')
+    const element = square.current
 
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('mouseup', onMouseUp)
@@ -59,7 +62,7 @@ const ClassSquare = () => {
 
   
   return (
-    <div className="classcontainerdiv">
+    <div className="classcontainerdiv" ref={square}>
         <div className="nameOfClass"></div>
         <div className="classAttributes"></div>
         <div className="classMethods"></div>
