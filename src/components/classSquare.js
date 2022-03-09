@@ -62,7 +62,7 @@ const ClassSquare = (props) => {
 
   
   return (
-    <div className="classcontainerdiv" ref={square}>
+    <div className="classcontainerdiv" ref={square} style={{zIndex: '5'}}>
         <div className="nameOfClass"></div>
         <div className="classAttributes"></div>
         <div className="classMethods"></div>
