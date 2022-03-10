@@ -1,4 +1,6 @@
 import Canvas from './components/canvas.js'
+import SideNav from './components/sideNav.js';
+import React, {useState} from 'react'
 
 function App() {
   return (

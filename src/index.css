@@ -6,8 +6,3 @@ body, .App, #root {
   margin: 0;
 }
 
-.App {
-  display: grid;
-  justify-content: center;
-}
-
