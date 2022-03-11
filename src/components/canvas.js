@@ -33,10 +33,8 @@ const onAddBtnClick = () => {
 
   return (
     <div className="mainContainer">
-      <SideNav setMargin={setMarginSideBar}/>
+      <SideNav setMargin={setMarginSideBar} addClassBox={onAddBtnClick} drawArrow={selectBoxes}/>
       <div className="container" style={{marginLeft: margin}}>
-        <button onClick={onAddBtnClick}>Add box</button>
-        <button onClick={selectBoxes}>Add arrow between boxes</button>
           {squareList}
           {arrowList}
       </div>
